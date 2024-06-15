@@ -1,6 +1,7 @@
-import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { SignedIn, UserButton } from '@clerk/nextjs';
+
 import MobileNav from './MobileNav';
 
 const Navbar = () => {
@@ -15,13 +16,18 @@ const Navbar = () => {
           className="max-sm:size-10"
         />
         <p className="text-[26px] font-extrabold text-white max-sm:hidden">
-          MagikMirror
+          YOOM
         </p>
       </Link>
-      <div className='flex-between gap-5'></div>
+      <div className="flex-between gap-5">
+        <SignedIn>
+          <UserButton afterSignOutUrl="/sign-in" />
+        </SignedIn>
+
         <MobileNav />
+      </div>
     </nav>
   );
-}
+};
 
 export default Navbar;
